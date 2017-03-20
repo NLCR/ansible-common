@@ -5,6 +5,11 @@
     state: '{{ packages.state }}'
   when: packages.name is defined
 
+- name: NTP is installed
+  yum:
+    name: ntp
+    state: installed
+
 - name: NTP servers configured
   blockinfile: 
     dest: /etc/ntp.conf
@@ -12,7 +17,6 @@
     block: |
       {{ ntp_servers }}
   notify: restart ntpd
-  tags: ntp
 
 - name: NTP daemon is running
   service:
