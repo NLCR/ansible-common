@@ -1,5 +1,5 @@
 packages: 
-  names: [ ntp ]
+  names: []
   state: latest
 
 timezone: Europe/Prague
