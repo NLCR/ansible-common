@@ -24,7 +24,7 @@
     state: started
     enabled: yes
 
-- name: 'Set timezone to {{ timezome }}'
+- name: 'Set timezone to {{ timezone }}'
   timezone:
     name: '{{ timezone }}'
 
