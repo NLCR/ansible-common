@@ -1,38 +1,13 @@
 ---
-- name: Install beloved packages
-  yum:
-    name: '{{ packages.name }}'
-    state: '{{ packages.state }}'
-  when: packages.name is defined
+- name: Provision
+  include: provision-{{ ansible_os_family }}.yml
 
-- name: NTP is installed
-  yum:
-    name: ntp
-    state: installed
+- name: Time is in sync
+  include: ntp-{{ ansible_os_family }}.yml
 
-- name: NTP servers configured
-  blockinfile: 
-    dest: /etc/ntp.conf
-    insertafter: '^# Please consider joining the pool \(http://www.pool.ntp.org/join.html\)\.$'
-    block: |
-      {{ ntp_servers }}
-  notify: restart ntpd
+- name: Set SMTP server, hostname and timezone
+  include: common-tasks.yml
 
-- name: NTP daemon is running
-  service:
-    name: ntpd
-    state: started
-    enabled: yes
-
-- name: 'Set timezone to {{ timezone }}'
-  timezone:
-    name: '{{ timezone }}'
-
-- name: postfix relay to '{{ smtp_host }}'
-  lineinfile:
-    dest: /etc/postfix/main.cf
-    line: 'relayhost= [{{ smtp_host }}]'
-
-- name: 'set hostname to {{ hostname }}'
-  hostname:
-    name: '{{ hostname }}'
+- name: Users are set
+  include: users.yml
+  tags: users

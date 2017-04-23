@@ -1,0 +1,14 @@
+- name: 'Set timezone to {{ timezone }}'
+  timezone:
+    name: '{{ timezone }}'
+  when:
+    - ansible_os_family == "RedHat"
+
+- name: postfix relay to '{{ smtp_host }}'
+  lineinfile:
+    dest: /etc/postfix/main.cf
+    line: 'relayhost= [{{ smtp_host }}]'
+
+- name: 'set hostname to {{ hostname }}'
+  hostname:
+    name: '{{ hostname }}'

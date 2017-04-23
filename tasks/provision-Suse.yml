@@ -1,0 +1,7 @@
+#- name: 'Zypper provisions: {{ packages.name | join(", ") }} are: {{ packages.state }}'
+#  zypper:
+#    name: '{{ packages.name }}'
+#    state: '{{ packages.state }}'
+#  when:
+#    - packages.name is defined
+#    - ansible_os_family == "Suse"

@@ -10,3 +10,5 @@ hostname: '{{ ansible_nodename }}'
 ntp_servers: |
   server: tik.cesnet.cz
   server: tak.cesnet.cz
+
+admins: {}

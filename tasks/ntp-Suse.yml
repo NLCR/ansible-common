@@ -1,0 +1,19 @@
+# Zypper wants to upgrade to latest, commenting for now, as i am not sure if upgrade will break anything.
+#- name: NTP is installed
+#  zypper:
+#    name: ntp
+#    state: present
+
+- name: NTP servers configured
+  blockinfile:
+    dest: /etc/ntp.conf
+    insertafter: '^# server 127\.127\.8\.0 mode 5 prefer$'
+    block: |
+      {{ ntp_servers }}
+  notify: restart ntp
+
+- name: NTP daemon is running
+  service:
+    name: ntp
+    state: started
+    enabled: yes
