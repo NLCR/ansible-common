@@ -12,7 +12,7 @@
     block: |
       {{ ntp_servers }}
   notify: restart ntpd
-  when: ntp-servers is defined
+  when: ntp_servers is defined
 
 - name: NTP daemon is running
   service:
