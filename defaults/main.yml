@@ -8,7 +8,11 @@ smtp_host: localhost
 hostname: '{{ ansible_nodename }}'
 
 ntp_servers: |
-  server: tik.cesnet.cz
-  server: tak.cesnet.cz
+  server 0.cz.pool.ntp.org
+  server 1.cz.pool.ntp.org
+  server 2.cz.pool.ntp.org
+  server 3.cz.pool.ntp.org
+  server tik.cesnet.cz
+  server tak.cesnet.cz
 
 admins: {}
