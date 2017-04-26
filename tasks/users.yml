@@ -26,3 +26,14 @@
     key: '{{ item.value.key }} {{ item.value.mail }}'
   with_dict: '{{ admins }}'
   when: admins is defined
+
+- name: Add private keys
+  copy:
+    src: '{{ item.value.private_key }}'
+    dest: '/home/{{ item.key }}/id_rsa'
+    mode: 0600
+    owner: '{{ item.key }}'
+  with_dict: '{{ admins }}'
+  when:
+    - admins is defined
+    - item.value.private_key is defined
