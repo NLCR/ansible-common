@@ -30,7 +30,7 @@
 - name: Add private keys
   copy:
     src: '{{ item.value.private_key }}'
-    dest: '/home/{{ item.key }}/.ssh/id_rsa'
+    dest: '/home/{{ item.key }}/.ssh/ansible.id_rsa'
     mode: 0600
     owner: '{{ item.key }}'
   with_dict: '{{ admins }}'
