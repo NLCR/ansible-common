@@ -1,7 +1,7 @@
-- name: 'YUM provisions: {{ packages.name | join(", ") }} are: {{ packages.state }}'
+- name: 'YUM provisions: {{ packages.name | join(", ") }} are: {{ packages.state | default("present")}}'
   yum:
     name: '{{ packages.name }}'
-    state: '{{ packages.state }}'
+    state: '{{ packages.state | default("present")}}'
   when: 
     - packages.name is defined
     - ansible_os_family == "RedHat"
