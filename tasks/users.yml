@@ -20,6 +20,16 @@
   with_dict: '{{ admins }}'
   when: admins is defined
 
+- name: Users are set and added to groups
+  user:
+    name: '{{ item.key }}'
+    comment: '{{ item.value.name }}, {{ item.value.mail | default("Mail has not been provided") }}'
+    uid: '{{ item.value.uid }}'
+    append: yes
+    groups: '{{ item.value.groups }}'
+  with_dict: '{{ users }}'
+  when: users is defined
+
 - name: Admins SSH keys imported
   authorized_key:
     user: '{{ item.key }}'
