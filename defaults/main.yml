@@ -14,5 +14,3 @@ ntp_servers: |
   server 3.cz.pool.ntp.org
   server tik.cesnet.cz
   server tak.cesnet.cz
-
-admins: {}

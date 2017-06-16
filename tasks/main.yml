@@ -7,7 +7,3 @@
 
 - name: Set SMTP server, hostname and timezone
   include: common-tasks.yml
-
-- name: Users are set
-  include: users.yml
-  tags: users
