@@ -9,10 +9,10 @@
     insertafter: '^# server 127\.127\.8\.0 mode 5 prefer$'
     block: |
       {{ ntp_servers }}
-  notify: restart ntp
+  notify: restart ntpd
 
 - name: NTP daemon is running
   service:
-    name: ntp
+    name: ntpd
     state: started
     enabled: yes
