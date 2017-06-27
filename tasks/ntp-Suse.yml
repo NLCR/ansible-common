@@ -1,8 +1,7 @@
-# Zypper wants to upgrade to latest, commenting for now, as i am not sure if upgrade will break anything.
-#- name: NTP is installed
-#  zypper:
-#    name: ntp
-#    state: present
+- name: NTP is installed
+  zypper:
+    name: ntp
+    state: present
 
 - name: NTP servers configured
   blockinfile:
