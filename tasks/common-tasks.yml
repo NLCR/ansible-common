@@ -8,6 +8,7 @@
   lineinfile:
     dest: /etc/postfix/main.cf
     line: 'relayhost= [{{ smtp_host }}]'
+  ignore_errors: yes
 
 - name: 'set hostname to {{ hostname }}'
   hostname:
