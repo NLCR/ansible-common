@@ -10,6 +10,8 @@
     block: |
       {{ ntp_servers }}
   notify: restart ntpd
+  ignore_errors: "{{ ansible_check_mode }}"
+  when: ntp_servers is defined
 
 - name: NTP daemon is running
   service:
