@@ -15,6 +15,6 @@
 
 - name: NTP daemon is running
   service:
-    name: ntpd
+    name: ntp
     state: started
     enabled: yes
